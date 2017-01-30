@@ -18,23 +18,23 @@ public class Main {
      * @param args args.
      */
     public static void main(String[] args) {
-        ConsoleOutput input = new ConsoleOutput();
-        Random random = new Random();
-        GenerateNumberController g = new GenerateNumberController(random);
-        NumberCheckerController n = new NumberCheckerController();
-        int max = 4;
-        int min = 2;
-        int attempCount = 3;
-        int target = g.generate(max, min);
+            ConsoleOutput input = new ConsoleOutput();
+        do {
+            Random random = new Random();
+            GenerateNumberController g = new GenerateNumberController(random);
+            NumberCheckerController n = new NumberCheckerController();
+            int max = 10;
+            int min = 2;
+            int attempCount = 3;
+            int target = g.generate(max, min);
 
-        Game game = new Game.GameBuilder()
-                .max(max)
-                .min(min)
-                .attempCount(attempCount)
-                .target(target)
-                .createGame();
-
-        n.check(input, game);
-
+            Game game = new Game.GameBuilder()
+                    .max(max)
+                    .min(min)
+                    .attempCount(attempCount)
+                    .target(target)
+                    .createGame();
+            n.check(input, game);
+        } while ("y".equals(input.ask("Хотите еще сыграть? (y/n)")));
     }
 }

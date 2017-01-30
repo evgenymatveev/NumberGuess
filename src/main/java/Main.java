@@ -22,9 +22,9 @@ public class Main {
         Random random = new Random();
         GenerateNumberController g = new GenerateNumberController(random);
         NumberCheckerController n = new NumberCheckerController();
-        int max = 10;
+        int max = 4;
         int min = 2;
-        int attempCount = 5;
+        int attempCount = 3;
         int target = g.generate(max, min);
 
         Game game = new Game.GameBuilder()

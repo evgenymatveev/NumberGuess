@@ -24,9 +24,9 @@ public class Main {
             GenerateNumberController g = new GenerateNumberController(random);
             NumberCheckerController n = new NumberCheckerController();
             int max = 10;
-            int min = 2;
+            int min = 1;
             int attempCount = 3;
-            int target = g.generate(max, min);
+            int target = g.generate(max, min, max);
 
             Game game = new Game.GameBuilder()
                     .max(max)

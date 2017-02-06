@@ -33,7 +33,7 @@ public class NumberCheckerController {
      * @param game game.
      */
     public void check(ConsoleOutput input, Game game) {
-        System.out.println("Загаданное число: "+ " " + game.getTarget());
+        System.out.println("Загаданное число: " + game.getTarget());
         System.out.println("Число загадано, введите ваше в диапазоне от" + " "
                 + game.getMin() + " "
                 + "до" + " "

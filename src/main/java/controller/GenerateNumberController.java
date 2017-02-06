@@ -27,11 +27,18 @@ public class GenerateNumberController {
      * Method generate for generate the number.
      * @param max max.
      * @param min min.
+     * @param n n.
      * @return int random.
      */
-    public int generate(final int max, final int min) {
-        final int size = max - min;
-        final int randomValue = random.nextInt() % size;
-        return min + randomValue;
+//    public int generate(final int max, final int min) {
+//        final int size = max - min;
+//        final int randomValue = random.nextInt() % size;
+//        return min + randomValue;
+//    }
+
+    public int generate(final int max, final int min, final int n) {
+
+        final int randomValue = random.nextInt(n + 1);
+        return randomValue;
     }
 }

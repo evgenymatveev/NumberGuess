@@ -22,7 +22,6 @@ public class GenerateNumberController {
     public GenerateNumberController(Random random) {
         this.random = random;
     }
-
     /**
      * Method generate for generate the number.
      * @param max max.

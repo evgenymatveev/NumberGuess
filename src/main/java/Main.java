@@ -1,7 +1,7 @@
 import controller.GenerateNumberController;
-import controller.NumberCheckerController;
 import model.Game;
 import view.ConsoleOutput;
+
 import java.util.Random;
 
 
@@ -22,11 +22,10 @@ public class Main {
         do {
             Random random = new Random();
             GenerateNumberController g = new GenerateNumberController(random);
-            NumberCheckerController n = new NumberCheckerController();
             int max = 10;
             int min = 1;
             int attempCount = 3;
-            int target = g.generate(max, min, max);
+            int target = g.generate(max);
 
             Game game = new Game.GameBuilder()
                     .max(max)
@@ -34,7 +33,7 @@ public class Main {
                     .attempCount(attempCount)
                     .target(target)
                     .createGame();
-            n.check(input, game);
+            input.check(input, game, g);
         } while ("y".equals(input.ask("Хотите еще сыграть? (y/n)")));
     }
 }

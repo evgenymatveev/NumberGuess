@@ -23,16 +23,17 @@
             <scope>test</scope>
         </dependency>
 
-        <!--<dependency>-->
-            <!--<groupId>org.mockito</groupId>-->
-            <!--<artifactId>mockito-core</artifactId>-->
-            <!--<version>2.5.0</version>-->
-            <!--<scope>test</scope>-->
-        <!--</dependency>-->
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-core</artifactId>
+            <version>2.5.0</version>
+            <scope>test</scope>
+        </dependency>
 
     </dependencies>
 
     <build>
+        <finalName>Number</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>

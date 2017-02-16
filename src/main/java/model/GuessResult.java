@@ -1,11 +1,7 @@
 package model;
 
 /**
- * Enum.
- *
  * @author Matveev Evgeny.
- * @version 1.0.
- * @since 30.01.17.
  */
 public enum GuessResult {
     /**

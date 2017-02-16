@@ -4,21 +4,17 @@ import view.ConsoleOutput;
 
 import java.util.Random;
 
-
 /**
- * Class Main to start the game.
- *
  * @author Matveev Evgeny.
- * @version 1.0.
- * @since 30.01.17.
  */
 public class Main {
     /**
-     * Start method main.
+     * Start of the game.
+     *
      * @param args args.
      */
     public static void main(String[] args) {
-            ConsoleOutput input = new ConsoleOutput();
+        ConsoleOutput input = new ConsoleOutput();
         do {
             Random random = new Random();
             GenerateNumberController g = new GenerateNumberController(random);
@@ -26,7 +22,6 @@ public class Main {
             int min = 1;
             int attempCount = 3;
             int target = g.generate(max);
-
             Game game = new Game.GameBuilder()
                     .max(max)
                     .min(min)

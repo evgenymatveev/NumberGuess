@@ -1,101 +1,62 @@
 package model;
 
 /**
- * Class Game.
- *
  * @author Matveev Evgeny.
- * @version 1.0.
- * @since 30.01.17.
  */
 public class Game {
-    /**
-     * Max value.
-     */
     private final int max;
-    /**
-     * Min value.
-     */
     private final int min;
-    /**
-     * The number of attempts.
-     */
-    private final int attempCount;
-    /**
-     * Unknown number.
-     */
+    private final int attemptCount;
     private final int target;
 
     /**
-     * Constructor.
-     * @param max max.
-     * @param min min.
-     * @param attempCount attempCount.
-     * @param target target.
+     * Please use {@link Game.GameBuilder} instead of the private constructor.
+     *
+     * @param max          value that the AI can choose.
+     * @param min          value that the AI can choose.
+     * @param attemptCount amount of the attempts that the user will have
+     *                     to guess the number.
+     * @param target       is the number that has been choose by the AI and need
+     *                     to be guessed by a player.
      */
-    private Game(int max, int min, int attempCount, int target) {
+    private Game(int max, int min, int attemptCount, int target) {
         this.max = max;
         this.min = min;
-        this.attempCount = attempCount;
+        this.attemptCount = attemptCount;
         this.target = target;
     }
 
-    /**
-     * Getter for max.
-     * @return max.
-     */
     public int getMax() {
         return max;
     }
 
-    /**
-     * Getter for min.
-     * @return min.
-     */
     public int getMin() {
         return min;
     }
 
-    /**
-     * Getter for attempCount.
-     * @return attempCount
-     */
-    public int getAttempCount() {
-        return attempCount;
+    public int getAttemptCount() {
+        return attemptCount;
     }
 
-    /**
-     * Getter for unknown number.
-     * @return target
-     */
     public int getTarget() {
         return target;
     }
 
     /**
-     * Builder for game.
+     * Builder for the {@link Game}. Please use the builder instead
+     * of the direct {@link Game} instantiation.
      */
     public static class GameBuilder {
-        /**
-         * Max value.
-         */
         private int max;
-        /**
-         * Min value.
-         */
         private int min;
-        /**
-         * The number of attempts.
-         */
         private int attempCount;
-        /**
-         * Unknown number.
-         */
         private int target;
 
         /**
-         * Constructor for Builder.
-         * @param max max.
-         * @return GameBuilder.
+         * Initialize the maximum number from a range.
+         *
+         * @param max is max number from a range.
+         * @return {@link GameBuilder}.
          */
         public GameBuilder max(int max) {
             this.max = max;
@@ -103,9 +64,10 @@ public class Game {
         }
 
         /**
-         * Constructor for Builder.
-         * @param min min.
-         * @return GameBuilder.
+         * Initialize the minimum number from a range.
+         *
+         * @param min is min number from a range.
+         * @return {@link GameBuilder}.
          */
         public GameBuilder min(int min) {
             this.min = min;
@@ -113,9 +75,10 @@ public class Game {
         }
 
         /**
-         * Constructor for Builder.
-         * @param attempCount attempCount.
-         * @return GameBuilder.
+         * Initialization of number of attempts of guessing the number.
+         *
+         * @param attempCount is the number of attempts.
+         * @return {@link GameBuilder}.
          */
         public GameBuilder attempCount(int attempCount) {
             this.attempCount = attempCount;
@@ -123,9 +86,10 @@ public class Game {
         }
 
         /**
-         * Constructor for Builder.
-         * @param target target.
-         * @return GameBuilder.
+         * Initialization of number which generated the generate() method.
+         *
+         * @param target is number which was generated.
+         * @return {@link GameBuilder}.
          */
         public GameBuilder target(int target) {
             this.target = target;
@@ -133,8 +97,10 @@ public class Game {
         }
 
         /**
-         * Method createGame.
-         * @return this Game.
+         * Creates new {@link Game} instance with the all variables.
+         * from the builder by passing to the constructor {@link Game#Game(int, int, int, int)}
+         *
+         * @return a new instance of the class {@link Game}.
          */
         public Game createGame() {
             return new Game(max, min, attempCount, target);

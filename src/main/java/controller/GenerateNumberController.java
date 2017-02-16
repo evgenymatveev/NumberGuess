@@ -5,34 +5,36 @@ import model.GuessResult;
 import java.util.Random;
 
 /**
- * Class GenerateNumberController for generate the number.
- *
  * @author Matveev Evgeny.
- * @version 1.0.
- * @since 30.01.17.
  */
 public class GenerateNumberController {
     private Random random;
+
     /**
-     * Constructor.
-     * @param random int random.
+     * Initialization of the Random class.
+     *
+     * @param random random.
      */
     public GenerateNumberController(Random random) {
         this.random = random;
     }
+
     /**
-     * Method generate for generate the number.
-     * @param n n.
-     * @return int random.
+     * Method of generating a random number in the range from 0 to n.
+     *
+     * @param n is the maximum number of range.
+     * @return the random number.
      */
     public int generate(final int n) {
         return random.nextInt(n) + 1;
     }
+
     /**
      * Method numberEqualityCheck() for comparison of the number of hidden and entered by the user.
-     * @param guess guess.
-     * @param target target.
-     * @return enum GuessResult.
+     *
+     * @param guess  is the user-entered number.
+     * @param target is conceived by program number.
+     * @return enum which was the comparisonwhich.
      */
     public static GuessResult numberEqualityCheck(final int guess, final int target) {
         if (guess > target) {
@@ -44,8 +46,3 @@ public class GenerateNumberController {
     }
 }
 
-//    public int generate(final int max, final int min) {
-//        final int size = max - min;
-//        final int randomValue = random.nextInt() % size;
-//        return min + randomValue;
-//    }

@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE module PUBLIC
-        "-//Puppy Crawl//DTD Check Configuration 1.3//EN"
-        "http://www.puppycrawl.com/dtds/configuration_1_3.dtd">
+          "-//Puppy Crawl//DTD Check Configuration 1.3//EN"
+          "http://www.puppycrawl.com/dtds/configuration_1_3.dtd">
 
 <!--
 
@@ -49,10 +49,10 @@
     <!-- Miscellaneous other checks.                   -->
     <!-- See http://checkstyle.sf.net/config_misc.html -->
     <module name="RegexpSingleline">
-        <property name="format" value="\s+$"/>
-        <property name="minimum" value="0"/>
-        <property name="maximum" value="0"/>
-        <property name="message" value="Line has trailing spaces."/>
+       <property name="format" value="\s+$"/>
+       <property name="minimum" value="0"/>
+       <property name="maximum" value="0"/>
+       <property name="message" value="Line has trailing spaces."/>
     </module>
 
     <!-- Checks for Headers                                -->
@@ -66,14 +66,19 @@
 
         <!-- Checks for Javadoc comments.                     -->
         <!-- See http://checkstyle.sf.net/config_javadoc.html -->
-
         <module name="JavadocMethod">
         <!-- disable getters/setters check -->
         <property name="allowMissingPropertyJavadoc" value="true"/>
+        <!-- disable constructors check -->
+            <property name="ignoreMethodNamesRegex" value="^[A-Z].*$"/>
+        </module>
+        <module name="JavadocType"/>
+        <!-- disable private check -->
+        <module name="JavadocVariable">
+            <property name="excludeScope" value="private"/>
         </module>
 
-        <module name="JavadocType"/>
-        <module name="JavadocVariable"/>
+
         <module name="JavadocStyle"/>
 
         <!-- Checks for Naming Conventions.                  -->
@@ -146,7 +151,8 @@
         <!--<module name="FinalClass"/>-->
         <!--<module name="HideUtilityClassConstructor"/>-->
         <module name="InterfaceIsType"/>
-        <module name="VisibilityModifier"/>
+        <!-- не говорит что переменная должна быть private -->
+        <!--<module name="VisibilityModifier"/>-->
 
         <!-- Miscellaneous other checks.                   -->
         <!-- See http://checkstyle.sf.net/config_misc.html -->
@@ -158,4 +164,3 @@
     </module>
 
 </module>
-

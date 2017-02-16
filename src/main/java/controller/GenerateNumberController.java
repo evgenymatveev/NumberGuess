@@ -1,5 +1,7 @@
 package controller;
 
+import model.GuessResult;
+
 import java.util.Random;
 
 /**
@@ -10,11 +12,7 @@ import java.util.Random;
  * @since 30.01.17.
  */
 public class GenerateNumberController {
-    /**
-     * Random.
-     */
     private Random random;
-
     /**
      * Constructor.
      * @param random int random.
@@ -24,20 +22,24 @@ public class GenerateNumberController {
     }
     /**
      * Method generate for generate the number.
-     * @param max max.
-     * @param min min.
      * @param n n.
      * @return int random.
      */
-//    public int generate(final int max, final int min) {
-//        final int size = max - min;
-//        final int randomValue = random.nextInt() % size;
-//        return min + randomValue;
-//    }
-
-    public int generate(final int max, final int min, final int n) {
-
-        final int randomValue = random.nextInt(n + 1);  // 0 -> n     // min = -5 max 5
-        return randomValue;
+    public int generate(final int n) {
+        return random.nextInt(n) + 1;
+    }
+    /**
+     * Method numberEqualityCheck() for comparison of the number of hidden and entered by the user.
+     * @param guess guess.
+     * @param target target.
+     * @return enum GuessResult.
+     */
+    public static GuessResult numberEqualityCheck(final int guess, final int target) {
+        if (guess > target) {
+            return GuessResult.GUESS_IS_BIGGER;
+        } else if (guess < target) {
+            return GuessResult.GUESS_IS_SMALL;
+        }
+        return GuessResult.EQUAL;
     }
 }

@@ -37,7 +37,7 @@ public class GenerateNumberController {
 
     public int generate(final int max, final int min, final int n) {
 
-        final int randomValue = random.nextInt(n + 1);
+        final int randomValue = random.nextInt(n + 1);  // 0 -> n     // min = -5 max 5
         return randomValue;
     }
 }

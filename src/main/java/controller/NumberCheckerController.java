@@ -32,24 +32,24 @@ public class NumberCheckerController {
      * @param input input.
      * @param game game.
      */
-    public void check(ConsoleOutput input, Game game) {
-        System.out.println("Загаданное число: " + game.getTarget());
+    public void check(final ConsoleOutput input, final Game game) {
         System.out.println("Число загадано, введите ваше в диапазоне от" + " "
                 + game.getMin() + " "
                 + "до" + " "
                 + game.getMax() + "." + " "
                 + "Количество попыток" + " "
-                + game.getAttempCount() + ".");
+                + game.getAttemptCount() + ".");
 
-        for (int i = 0; i < game.getAttempCount(); i++) {
+        for (int i = 0; i < game.getAttemptCount(); i++) {
 
             int key = Integer.parseInt(input.ask());
 
-            if (numberEqualityCheck(key, game.getTarget()) == GuessResult.GUESS_IS_BIGGER) {
-                System.out.println("Ваше число больше. Осталось попыток -" + " " + (game.getAttempCount() - 1 - i));
-            } else if (NumberCheckerController.numberEqualityCheck(key, game.getTarget()) == GuessResult.GUESS_IS_SMALL) {
-                System.out.println("Ваше число меньше. Осталось попыток -" + " " + (game.getAttempCount() - 1 - i));
-            } else if ((NumberCheckerController.numberEqualityCheck(key, game.getTarget()) == GuessResult.EQUAL)) {
+            final GuessResult result = numberEqualityCheck(key, game.getTarget());
+            if (result == GuessResult.GUESS_IS_BIGGER) {
+                System.out.println("Ваше число больше. Осталось попыток -" + " " + (game.getAttemptCount() - 1 - i));
+            } else if (result == GuessResult.GUESS_IS_SMALL) {
+                System.out.println("Ваше число меньше. Осталось попыток -" + " " + (game.getAttemptCount() - 1 - i));
+            } else if (result == GuessResult.EQUAL) {
                 System.out.println("Вы угадали!");
                 break;
             }

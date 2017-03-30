@@ -16,8 +16,9 @@ public class ConsoleOutput {
      * Method for a request from the user of the number.
      *
      * @return the response from the user.
+     * @throws NumberFormatException will generate an exception if the user enters not a whole number.
      */
-    public String ask() {
+    public String ask() throws NumberFormatException {
         return scanner.nextLine();
     }
 
@@ -40,23 +41,36 @@ public class ConsoleOutput {
      * @param generateNumberController generate the number.
      */
     public void check(ConsoleOutput input, Game game, GenerateNumberController generateNumberController) {
+        int numberOfattempts = game.getAttemptCount();
         System.out.println("Число загадано, введите ваше в диапазоне от" + " "
                 + game.getMin() + " "
                 + "до" + " "
                 + game.getMax() + "." + " "
                 + "Количество попыток" + " "
-                + game.getAttemptCount() + ".");
-        for (int i = 0; i < game.getAttemptCount(); i++) {
-            int key = Integer.parseInt(input.ask());
-            final GuessResult result = generateNumberController.numberEqualityCheck(key, game.getTarget());
-            if (result == GuessResult.GUESS_IS_BIGGER) {
-                System.out.println("Ваше число больше. Осталось попыток:" + " " + (game.getAttemptCount() - 1 - i));
-            } else if (result == GuessResult.GUESS_IS_SMALL) {
-                System.out.println("Ваше число меньше. Осталось попыток:" + " " + (game.getAttemptCount() - 1 - i));
-            } else if (result == GuessResult.EQUAL) {
-                System.out.println("Вы угадали!");
-                break;
+                + numberOfattempts + ".");
+        try {
+            for (int i = 0; i < game.getAttemptCount(); i++) {
+                int index = numberOfattempts - 1 - i;
+                int key = Integer.parseInt(input.ask());
+                final GuessResult result = GenerateNumberController.numberEqualityCheck(key, game.getTarget());
+
+                if (result == GuessResult.GUESS_IS_BIGGER) {
+                    System.out.println("Ваше число больше. Осталось попыток:" + " " + index);
+                } else if (result == GuessResult.GUESS_IS_SMALL) {
+                    System.out.println("Ваше число меньше. Осталось попыток:" + " " + index);
+                }
+                if (result == GuessResult.EQUAL) {
+                    System.out.println("Вы угадали!");
+                    break;
+                } else {
+                    if (index == 0) {
+                        System.out.println("Вы не угадали!)");
+                        break;
+                    }
+                }
             }
+        } catch (NumberFormatException e) {
+            System.out.println("Вводите только целые числа!");
         }
     }
 }
